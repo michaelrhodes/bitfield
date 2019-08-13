@@ -1,0 +1,13 @@
+{
+  "name": "bitfield",
+  "author": "Michael Rhodes",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "dexy": "github:michaelrhodes/dexy"
+  },
+  "scripts": {
+    "test": "dexy test"
+  }
+}
