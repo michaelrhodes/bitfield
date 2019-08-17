@@ -23,8 +23,10 @@ field.set(6, 1), assert(field.get(6) === true, 'on(6)')
 field.set(7, 1), assert(field.get(7) === true, 'on(7)')
 field.set(8, 1), assert(field.get(8) === false, 'on(8) ie. out of bounds')
 
-field.set(0, 0), assert(field.get(0) === false, 'off(0)')
-field.set(0, 0), assert(field.get(0) === false, 'off(0)')
+var ref = bitfield(field.buffer)
+assert(ref.get(0) === field.get(0), 'eq(0)')
+ref.set(0, 0), assert(field.get(0) === false, 'off(0)')
+
 field.set(1, 0), assert(field.get(1) === false, 'off(1)')
 field.set(2, 0), assert(field.get(2) === false, 'off(2)')
 field.set(3, 0), assert(field.get(3) === false, 'off(3)')
