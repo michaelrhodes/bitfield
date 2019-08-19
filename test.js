@@ -1,5 +1,6 @@
 var assert = console.assert
 var bitfield = require('./index')
+var invert = require('./invert')
 
 var field = bitfield(8)
 
@@ -42,3 +43,24 @@ assert(bitfield(9).buffer.length === 2, 'length(9)')
 assert(bitfield(17).buffer.length === 3, 'length(17)')
 assert(bitfield(25).buffer.length === 4, 'length(25)')
 assert(bitfield(33).buffer.length === 5, 'length(33)')
+
+var inverted = bitfield(invert(field.buffer))
+assert(field.get(0) === false, 'field.get(0)')
+assert(field.get(1) === false, 'field.get(1)')
+assert(field.get(2) === false, 'field.get(2)')
+assert(field.get(3) === false, 'field.get(3)')
+assert(field.get(4) === false, 'field.get(4)')
+assert(field.get(5) === false, 'field.get(5)')
+assert(field.get(6) === false, 'field.get(6)')
+assert(field.get(7) === false, 'field.get(7)')
+assert(field.get(8) === false, 'get(8) ie. out of bounds')
+
+assert(inverted.get(0) === true, 'inverted.get(0)')
+assert(inverted.get(1) === true, 'inverted.get(1)')
+assert(inverted.get(2) === true, 'inverted.get(2)')
+assert(inverted.get(3) === true, 'inverted.get(3)')
+assert(inverted.get(4) === true, 'inverted.get(4)')
+assert(inverted.get(5) === true, 'inverted.get(5)')
+assert(inverted.get(6) === true, 'inverted.get(6)')
+assert(inverted.get(7) === true, 'inverted.get(7)')
+assert(inverted.get(8) === false, 'inverted.get(8) ie. out of bounds')
